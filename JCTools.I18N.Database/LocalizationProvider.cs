@@ -124,11 +124,23 @@ namespace JCTools.I18N.Database
         /// </summary>
         /// <param name="resource">Resource type owner of the string localizations</param>
         /// <returns>The new generated instance</returns>
-        public LocalizationProvider<TContext> GetForType(Type resource)
+        public LocalizationProvider<TContext> GetFor(Type resource)
         {
             return new LocalizationProvider<TContext>(_dbContext, _serviceProvider)
             {
                 _currentResource = resource.FullName
+            };
+        }
+        /// <summary>
+        /// Allows get the <see cref="LocalizationProvider{TContext}"/> for the specified type
+        /// </summary>
+        /// <param name="resource">Resource type owner of the string localizations</param>
+        /// <returns>The new generated instance</returns>
+        public LocalizationProvider<TContext> GetFor(string resource)
+        {
+            return new LocalizationProvider<TContext>(_dbContext, _serviceProvider)
+            {
+                _currentResource = resource
             };
         }
 
